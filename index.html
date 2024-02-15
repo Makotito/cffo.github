@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <audio autoplay loop src="./enredados.mp3"></audio>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #15202B, #0E2A38);
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container_typing {
+            animation: animacion 2.5s steps(60), transparent .5s step-end infinite alternate;
+            width: 12.8em;
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 7ch;
+            color: white;
+            border-right: 3px solid;
+        }
+
+        @keyframes animacion {
+            from {
+                width: 0px;
+            }
+        }
+
+        @keyframes transparent {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .morning-message {
+            color: white;
+            font-size: 1em;
+            margin-bottom: 10px;
+            text-align: center;
+            max-width: 60%; /* Ajusta el ancho máximo del párrafo */
+            margin: 0 auto; /* Centra el párrafo horizontalmente */
+        }
+
+        .action-button {
+            margin-top: 10px;
+            background-color: #990099;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .action-button:hover {
+            background-color: #5c525c;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <h3 class="container_typing">¡Buen día, mi chama!❤️😊</h3><br>
+        <p class="morning-message">Bienvenida a un desafío intrigante 👀! Comienza tu jornada con un acertijo: 
+            ¿Cuál es la fecha que se esconde hoy? 🤔 Descifra el enigma para avanzar y revelar sorpresas que te acercarán 
+            a un regalo especial 🕵️‍♂️🎁. ¡Que tu día esté lleno de descubrimientos emocionantes y momentos inolvidables! 
+            ¡Adelante, valiente buscador🔍, que cada respuesta correcta✅ te acerque más a la recompensa que aguarda 
+            al final de este fascinante camino!</p><br>
+        <!-- Agregamos un input de fecha -->
+        <!-- <input class="date-input" type="date" id="selectedDate"> -->
+        <button class="action-button"><a href="juego.html" style="color: white; text-decoration: none;">Comienza la ronda</a></button>
+    </section>    
+</body>
+</html>

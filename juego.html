@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Enredados</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+
+        #quiz-container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        .question {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .answer-button {
+            width: 200px;
+            padding: 10px;
+            margin: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background-color: #990099;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .answer-button:hover {
+            background-color: #5c525c;
+        }
+
+    </style>
+</head>
+<body>
+    <video autoplay loop muted>
+        <source src="./fondo.mp4" type="video/mp4">
+    </video>
+
+    <div id="quiz-container">
+        <div id="question" class="question">
+        </div>
+        <div id="answers"></div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "¿Cuál es el nombre del personaje principal?",
+                answers: ["Rapunzel", "Elsa", "Ariel", "Mulan"],
+                correctAnswer: "Rapunzel"
+            },
+            {
+                question: "¿Cómo se llama el ladrón que conoce Rapunzel?",
+                answers: ["Kristoff", "Flynn Rider", "Aladdín", "Simba"],
+                correctAnswer: "Flynn Rider"
+            },
+            {
+                question: "¿Qué usa Rapunzel para defenderse?",
+                answers: ["Una silla", "Su pelo", "Una sartén", "Una espada"],
+                correctAnswer: "Una sartén"
+            },
+            {
+                question: "¿Cómo llama Flynn a Rapunzel?",
+                answers: ["Princesita", "Rubita", "Rapunzel", "Rubia"],
+                correctAnswer: "Princesita"
+            },
+            {
+                question: "¿Qué le dio los poderes mágicos a Rapunzel?",
+                answers: ["Una flor", "Un hechizo", "Son de nacimiento", "Un hada"],
+                correctAnswer: "Una flor"
+            },
+            {
+                question: "¿Qué cumpleaños celebra Rapunzel viendo los farolillos?",
+                answers: ["19", "18", "17", "16"],
+                correctAnswer: "18"
+            },
+            {
+                question: "¿Cómo se llama el rufián que colecciona unicornios?",
+                answers: ["Narigón", "Uncino", "Blady", "Cupido"],
+                correctAnswer: "Blady"
+            },
+            {
+                question: "¿Qué NO hace Rapunzel según la canción?",
+                answers: ["Hacer velas", "Cocinar", "Limpiar", "Jardinería"],
+                correctAnswer: "Cocinar"
+            },
+            {
+                question: "¿Cuál es el nombre real de Flynn Rider?",
+                answers: ["Eugeni Fitzherber", "Eugene Fitzherber", "John Fitzherber", "Barney Fitzherber"],
+                correctAnswer: "Eugene Fitzherber"
+            },
+            {
+                question: "¿Qué le pasa al pelo de Rapunzel si lo cortan?",
+                answers: ["Se vuelve castaño y pierde su poder", "Se le cae todo el pelo", "Nada", "Se vuelve marrón"],
+                correctAnswer: "Se vuelve castaño y pierde su poder"
+            },
+            {
+                question: "¿Qué le llevó a Flynn a encontrar la torre?",
+                answers: ["Destino", "Fortuna", "Un caballo", "Suerte"],
+                correctAnswer: "Destino"
+            },
+            {
+                question: "¿Cómo se llama el reino del que procede Rapunzel?",
+                answers: ["Reino de Arendelle", "Reino de Cristal", "Reino del Sol", "Reino de Corona"],
+                correctAnswer: "Reino de Corona"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function showQuestion() {
+            const questionContainer = document.getElementById("question");
+            const answersContainer = document.getElementById("answers");
+
+            questionContainer.textContent = questions[currentQuestionIndex].question;
+            answersContainer.innerHTML = "";
+
+            questions[currentQuestionIndex].answers.forEach(answer => {
+                const answerButton = document.createElement("button");
+                answerButton.className = "answer-button";
+                answerButton.textContent = answer;
+                answerButton.onclick = () => checkAnswer(answer);
+                answersContainer.appendChild(answerButton);
+            });
+        }
+
+        function checkAnswer(answer) {
+            const correctAnswer = questions[currentQuestionIndex].correctAnswer;
+
+            if (answer === correctAnswer) {
+                alert("¡Correcto!");
+            } else {
+                alert("Respuesta incorrecta. La respuesta correcta es: " + correctAnswer);
+            }
+
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                alert("¡Has completado el quiz!");
+                resetQuiz();
+            }
+        }
+
+        function resetQuiz() {
+            currentQuestionIndex = 0;
+            showQuestion();
+        }
+
+        showQuestion();
+        
+    </script>
+    
+    <button style="margin: 6rem; width: 20%; height: 5% ;" type="button" class="btn btn-success"><a href="flowers.html">Terminaste con exito</button>
+    </a></button>
+    <audio id="background-audio" autoplay loop>
+        <source src="./enredados.mp3" type="audio/mpeg">
+    </audio>
+</body>
+</html>
